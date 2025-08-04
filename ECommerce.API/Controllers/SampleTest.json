@@ -1,0 +1,30 @@
+{
+  "AddOrder": {
+    "customerId": 1,
+    "productIds": [ 2, 3 ]
+  },
+  "GetOrderById/{id}": 1,
+  "UpdateOrderStatus/{id}": 2,
+  "GetAllCustomers": "",
+  "GetCustomerById/{id}": 1,
+  "AddCustomer": {
+    "name": "Ali Zakaria",
+    "email": "ali@example.com",
+    "phone": "0123456789"
+  },
+  "SuccessRequest": {
+    "success": true,
+    "statusCode": 200,
+    "message": "Order marked as Delivered",
+    "data": "Order marked as Delivered"
+  },
+  "ValidationRequest": {
+    "success": false,
+    "statusCode": 400,
+    "message": "Validation errors",
+    "errors": [
+      "Name is required",
+      "Email must be valid"
+    ]
+  }
+}
