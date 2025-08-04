@@ -40,5 +40,10 @@ namespace ECommerce.Infrastructure.Repositories
              .ThenInclude(op => op.Product)
              .FirstOrDefaultAsync(o => o.Id == id);
         }
+
+        public async Task<bool> IsEmailUnique(string email)
+        {
+            return !await _context.Customers.AnyAsync(c => c.Email == email);
+        }
     }
 }

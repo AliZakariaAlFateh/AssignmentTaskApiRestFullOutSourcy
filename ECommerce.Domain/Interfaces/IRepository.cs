@@ -16,5 +16,6 @@ namespace ECommerce.Domain.Interfaces
         void Delete(T entity);
         Task SaveAsync();
         Task<Order> GetOrderWithProductsAsync(int id);
+        Task<bool> IsEmailUnique(string email);
     }
 }

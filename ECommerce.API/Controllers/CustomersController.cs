@@ -56,6 +56,13 @@ namespace ECommerce.API.Controllers
                 return BadRequest(ApiResponse<string>.Fail(ResponseStatusCode.BadRequest, "Validation errors", errors));
             }
 
+            var isEmailUnique = await _unitOfWork.Customers.IsEmailUnique(dto.Email);
+            if (!isEmailUnique)
+            {
+                var errors = new List<string> { "The email address is already in use." };
+                return BadRequest(ApiResponse<string>.Fail(ResponseStatusCode.BadRequest, "Validation errors", errors));
+            }
+
             var customer = new Customer { Name = dto.Name, Email = dto.Email, Phone = dto.Phone };
             await _unitOfWork.Customers.AddAsync(customer);
             await _unitOfWork.SaveAsync();
